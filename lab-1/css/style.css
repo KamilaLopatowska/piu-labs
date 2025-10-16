@@ -1,19 +1,75 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
-}
+html,
 body {
-  margin: 1rem;
+  height: 100%;
+  margin: 0;
   padding: 0;
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(150deg, rgb(242, 62, 134), rgb(11, 0, 11));
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 3rem 0;
+  font-size: 3rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+}
+
+button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button a {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
+  color: #fff;
+  text-decoration: none;
   font-size: 1.4rem;
+  transition: color 0.3s ease;
 }
+
 a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+  color: #949191;
 }
