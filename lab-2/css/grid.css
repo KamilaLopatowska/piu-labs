@@ -1,0 +1,142 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #e6e6e6;
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  width: 100%;
+  background: #f39c12;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+
+  @media (min-width: 1024px) {
+    padding: 1rem 1.25rem;
+  }
+}
+
+header .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.6rem;
+  background: white;
+  color: #2b2b2b;
+  border-radius: 1vh;
+  font-weight: 700;
+  line-height: 2;
+}
+header .logo::after {
+  content: 'Logo';
+}
+
+header h1 {
+  font-size: 1.6rem;
+}
+
+nav {
+  width: 100%;
+  background: #0b70b7;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.35rem;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+main,
+aside {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+}
+
+main h1,
+main h2,
+main h3,
+main p,
+aside h1,
+aside h2,
+aside h3,
+aside p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+aside {
+  background: #e9f7ef;
+  border-left: 6px solid #b6e2cf;
+}
+aside h3 {
+  margin-bottom: 0.5rem;
+}
+
+aside > div {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+aside span {
+  font-size: 4rem;
+}
+
+footer {
+  width: 100%;
+  background: #15a371;
+  color: #fff;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+  main {
+    flex: 1 1 68%;
+  }
+
+  aside {
+    flex: 0 0 30%;
+    background: #e6f6ef;
+  }
+
+  aside > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    justify-items: center;
+    align-items: start;
+  }
+}
