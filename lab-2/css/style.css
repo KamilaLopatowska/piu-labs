@@ -1,19 +1,58 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
-}
+html,
 body {
-  margin: 1rem;
-  padding: 0;
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* wyśrodkowanie w pionie */
+  align-items: center; /* wyśrodkowanie w poziomie */
+  background: radial-gradient(
+    circle at 50% 50%,
+    #ebd8d0 0%,
+    #eac9c1 10%,
+    #d3ab9e 50%
+  );
+  background-blend-mode: screen;
+  background-attachment: fixed;
 }
 
-a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
-  font-size: 1.4rem;
+h1 {
+  margin-bottom: 2rem; /* odstęp od przycisków */
 }
-a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+
+.buttons-wrapper {
+  display: flex; /* przyciski obok siebie */
+  gap: 1rem; /* odstęp między przyciskami */
+  margin-bottom: 2rem; /* odstęp od linku Powrót */
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid black;
+  border-radius: 12px; /* zaokrąglone rogi */
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* cień po najechaniu */
+  cursor: pointer;
+  transform: translateY(-2px); /* lekki efekt unoszenia */
+}
+
+a[href='..'] {
+  margin-top: 1rem;
+  color: #2a2928;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+a[href='..']:hover {
+  text-decoration: underline;
 }
