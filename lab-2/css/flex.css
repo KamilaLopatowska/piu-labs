@@ -109,6 +109,7 @@ header:has(input[name='version'][value='red']:checked)
   flex-basis: 28%;
   text-align: center;
   position: relative;
+  font-weight: 800;
   @media (max-width: 1024px) {
     flex-basis: 100%;
   }
