@@ -1,0 +1,243 @@
+:root {
+  --theme-700: #0c4583;
+  --theme-600: #1559a5;
+  --theme-500: #1e6fce;
+  --ink-900: #1a1a1a;
+  --ink-700: #2e2e2e;
+  --muted: #6b7280;
+  --photo: url('../img/polo_b.png');
+}
+
+.product {
+  max-inline-size: min(100%, calc(500px + 300px + 2rem));
+  margin-inline: auto;
+  margin-block: 1.5rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  padding: 1.25rem;
+  background: #eeeeee;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: var(--ink-900);
+  justify-items: center;
+  overflow: hidden;
+}
+
+.product__photo {
+  inline-size: min(100%, 500px);
+  aspect-ratio: 1/1;
+  justify-self: center;
+  border-radius: 14px;
+  background-image: var(--photo);
+  background-size: cover;
+  background-position: center;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px var(--theme-600);
+}
+
+.product__panel {
+  inline-size: min(300px, 100%);
+  text-align: center;
+}
+
+.product__header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.product__title {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+}
+
+.badge {
+  margin: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: color-mix(in oklab, var(--theme-600), #000 10%);
+}
+
+.product__lead {
+  flex-basis: 100%;
+  order: 2;
+  width: 100%;
+  text-align: left;
+  margin: 0.6rem 0 1rem 0;
+  color: var(--muted);
+}
+
+fieldset {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  border: 0;
+}
+legend {
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+  color: var(--ink-700);
+}
+
+.picker input,
+.sizes input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.swatch {
+  --dot-size: 26px;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--dot-size);
+  block-size: var(--dot-size);
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.swatch::before {
+  content: '';
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.15s ease;
+}
+
+.swatch--blue::before {
+  background: #1e6fce;
+}
+.swatch--red::before {
+  background: #dc2626;
+}
+.swatch--green::before {
+  background: #1a9c46;
+}
+.swatch--yellow::before {
+  background: #f2b411;
+}
+
+#color-blue:checked + .swatch--blue {
+  box-shadow: 0 0 0 2px #000;
+}
+#color-red:checked + .swatch--red {
+  box-shadow: 0 0 0 2px #000;
+}
+#color-green:checked + .swatch--green {
+  box-shadow: 0 0 0 2px #000;
+}
+#color-yellow:checked + .swatch--yellow {
+  box-shadow: 0 0 0 2px #000;
+}
+
+#color-blue:checked + .swatch--blue::before {
+  transform: scale(0.82);
+}
+#color-red:checked + .swatch--red::before {
+  transform: scale(0.82);
+}
+#color-green:checked + .swatch--green::before {
+  transform: scale(0.82);
+}
+#color-yellow:checked + .swatch--yellow::before {
+  transform: scale(0.82);
+}
+
+:root {
+  --btn-size: 44px;
+}
+
+.btn {
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--btn-size);
+  block-size: var(--btn-size);
+  margin-right: 0.4rem;
+  border-radius: 0.4rem;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.sizes input:checked + .btn {
+  background: var(--theme-600);
+  color: #fff;
+  border-color: #000;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0.25rem 0 1rem 0;
+  color: var(--ink-900);
+}
+
+.cta {
+  inline-size: 100%;
+  display: inline-grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-radius: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  background: color-mix(in oklab, var(--theme-600), #000 10%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+}
+
+.product:has(#color-red:checked) {
+  --theme-700: #991b1b;
+  --theme-600: #dc2626;
+  --theme-500: #ef4444;
+  --photo: url('../img/polo_r.png');
+}
+
+.product:has(#color-green:checked) {
+  --theme-700: #0b6c31;
+  --theme-600: #1a9c46;
+  --theme-500: #22c55e;
+  --photo: url('../img/polo_g.png');
+}
+
+.product:has(#color-yellow:checked) {
+  --theme-700: #a06e00;
+  --theme-600: #f2b411;
+  --theme-500: #f4c433;
+  --photo: url('../img/polo_y.png');
+}

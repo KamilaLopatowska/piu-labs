@@ -5,8 +5,12 @@ html {
   line-height: 1.5; /* lepsza czytelność */
 }
 body {
-  margin: 1rem;
+  margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 a {
