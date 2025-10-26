@@ -6,16 +6,65 @@
   --ink-700: #2e2e2e;
   --muted: #6b7280;
   --photo: url('../img/polo_b.png');
+  --btn-size: 48px;
+}
+
+@keyframes size-bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-3px) scale(1.18);
+  }
+  60% {
+    transform: translateY(0) scale(0.96);
+  }
+  100% {
+    transform: translateY(-1px) scale(1.04);
+  }
+}
+@keyframes size-ring {
+  0% {
+    opacity: 0.45;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+  60% {
+    opacity: 0.18;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.6);
+  }
+}
+@keyframes size-ring-2 {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3.4);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #eeeeee;
 }
 
 .product {
   max-inline-size: min(100%, calc(500px + 300px + 2rem));
   margin-inline: auto;
-  margin-block: 1.5rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   padding: 1.25rem;
+  border-radius: 0;
   background: #eeeeee;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
   color: var(--ink-900);
@@ -33,6 +82,11 @@
   background-position: center;
   background-color: #fff;
   box-shadow: 0 0 0 4px var(--theme-600);
+  transition: box-shadow 0.25s ease, transform 0.25s ease,
+    background-image 0.2s ease-in-out;
+}
+.product__photo:hover {
+  transform: translateY(-3px);
 }
 
 .product__panel {
@@ -43,35 +97,37 @@
 .product__header {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
   width: 100%;
-  gap: 0.5rem;
-  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-
 .product__title {
   margin: 0;
   text-align: left;
   font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  color: var(--ink-900);
 }
-
 .badge {
-  margin: 0;
+  display: inline-block;
   padding: 0.2rem 0.55rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 700;
   color: #fff;
   background: color-mix(in oklab, var(--theme-600), #000 10%);
+  white-space: nowrap;
+  margin: 0;
+  transform: translateY(-1px);
 }
-
 .product__lead {
   flex-basis: 100%;
   order: 2;
   width: 100%;
   text-align: left;
   margin: 0.6rem 0 1rem 0;
-  color: var(--muted);
+  color: #4b5563;
+  font-size: 0.95rem;
 }
 
 fieldset {
@@ -110,7 +166,6 @@ legend {
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
 .swatch::before {
   content: '';
   inline-size: 100%;
@@ -119,7 +174,6 @@ legend {
   display: block;
   transition: transform 0.15s ease;
 }
-
 .swatch--blue::before {
   background: #1e6fce;
 }
@@ -147,47 +201,71 @@ legend {
 }
 
 #color-blue:checked + .swatch--blue::before {
-  transform: scale(0.82);
+  transform: scale(0.78);
 }
 #color-red:checked + .swatch--red::before {
-  transform: scale(0.82);
+  transform: scale(0.78);
 }
 #color-green:checked + .swatch--green::before {
-  transform: scale(0.82);
+  transform: scale(0.78);
 }
 #color-yellow:checked + .swatch--yellow::before {
-  transform: scale(0.82);
-}
-
-:root {
-  --btn-size: 44px;
+  transform: scale(0.78);
 }
 
 .btn {
+  position: relative;
   display: inline-grid;
   place-items: center;
   inline-size: var(--btn-size);
   block-size: var(--btn-size);
-  margin-right: 0.4rem;
-  border-radius: 0.4rem;
+  margin-right: 0.5rem;
+  border-radius: 0.35rem;
   border: 2px solid #000;
   background: #fff;
   color: #000;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.12s ease, background-color 0.12s ease,
-    color 0.12s ease;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.btn:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
-.btn:hover {
-  transform: translateY(-1px);
+.btn::before,
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28%;
+  aspect-ratio: 1;
+  border: 2px solid var(--theme-600);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  pointer-events: none;
 }
 
 .sizes input:checked + .btn {
   background: var(--theme-600);
   color: #fff;
   border-color: #000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+  animation: size-bounce 0.42s ease-out both;
+}
+.sizes input:checked + .btn::before {
+  opacity: 1;
+  animation: size-ring 0.58s ease-out both;
+}
+.sizes input:checked + .btn::after {
+  opacity: 1;
+  animation: size-ring-2 0.7s ease-out 0.05s both;
 }
 
 .price {
@@ -213,12 +291,11 @@ legend {
   background: color-mix(in oklab, var(--theme-600), #000 10%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease,
-    background-color 0.12s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background-color 0.18s ease;
 }
-
 .cta:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .product:has(#color-red:checked) {
@@ -227,14 +304,12 @@ legend {
   --theme-500: #ef4444;
   --photo: url('../img/polo_r.png');
 }
-
 .product:has(#color-green:checked) {
   --theme-700: #0b6c31;
   --theme-600: #1a9c46;
   --theme-500: #22c55e;
   --photo: url('../img/polo_g.png');
 }
-
 .product:has(#color-yellow:checked) {
   --theme-700: #a06e00;
   --theme-600: #f2b411;
