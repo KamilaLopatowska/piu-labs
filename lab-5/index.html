@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kształty — ES6 + Observer</title>
+    <link rel="stylesheet" href="./styl.css" />
+  </head>
+
+  <body>
+    <h1>Kształty</h1>
+
+    <div class="controls">
+      <button id="addSquare">⬛ Dodaj kwadrat</button>
+      <button id="addCircle">⚪ Dodaj koło</button>
+      <button id="recolorSquares">🎨 Losuj&nbsp;kolory kwadratów</button>
+      <button id="recolorCircles">🎨 Losuj&nbsp;kolory kółek</button>
+    </div>
+
+    <div class="counters">
+      Kwadraty: <span id="squareCount">0</span> | Kółka:
+      <span id="circleCount">0</span> | Razem: <span id="totalCount">0</span>
+    </div>
+
+    <div id="shapeList"></div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
